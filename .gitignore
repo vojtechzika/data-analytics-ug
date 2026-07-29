@@ -1,6 +1,9 @@
 data/clean/*
 !data/clean/.gitkeep
 
+before-class/*
+!before-class/*.pdf
+
 .DS_Store
 git.txt
 sync.command
