@@ -1,3 +1,6 @@
+data/clean/
+data/clean/.gitkeep
+
 .DS_Store
 git.txt
 sync.command
