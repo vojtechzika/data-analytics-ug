@@ -1,8 +1,8 @@
 data/clean/*
 !data/clean/.gitkeep
 
-before-class/*
-!before-class/*.pdf
+before-course/*
+!before-course/*.pdf
 
 .DS_Store
 git.txt
