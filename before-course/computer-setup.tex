@@ -1,0 +1,211 @@
+\documentclass[11pt]{article}
+
+\usepackage[letterpaper, top=1in, bottom=1in, left=1.1in, right=1.1in]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{parskip}
+
+\definecolor{accent}{HTML}{1F4E5F}
+\definecolor{lightbg}{HTML}{EAF1F4}
+\definecolor{codebg}{HTML}{F2F2F2}
+
+\titleformat{\section}{\Large\bfseries\color{accent}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{accent!80!black}}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.4em}{0.6em}
+\titlespacing*{\subsection}{0pt}{1.1em}{0.4em}
+
+\hypersetup{
+	colorlinks=true,
+	urlcolor=accent,
+	linkcolor=accent,
+}
+
+\lstdefinestyle{code}{
+	backgroundcolor=\color{codebg},
+	basicstyle=\ttfamily\small,
+	breaklines=true,
+	frame=none,
+	xleftmargin=2.2em,
+	xrightmargin=0.6em,
+	framexleftmargin=2.2em,
+	aboveskip=0.6em,
+	belowskip=0.8em,
+}
+\lstset{style=code}
+
+\newtcolorbox{noteBox}{
+	colback=lightbg,
+	colframe=accent,
+	boxrule=0.4pt,
+	leftrule=2pt,
+	toprule=0pt,
+	bottomrule=0pt,
+	rightrule=0pt,
+	arc=0pt,
+	outer arc=0pt,
+	boxsep=4pt,
+	left=8pt, right=8pt, top=4pt, bottom=4pt,
+}
+
+\setlist[enumerate]{itemsep=2pt, topsep=4pt}
+\setlist[itemize]{itemsep=2pt, topsep=4pt}
+
+\begin{document}
+	
+	% ============================================================
+	% TITLE PAGE
+	% ============================================================
+	\begin{titlepage}
+		\centering
+		\vspace*{2.2in}
+		
+		{\Huge\bfseries\color{accent} Computer Setup Guide}\\[0.6em]
+		{\Large\color{gray!70!black} for Data Analytics Course (Undergraduate)}\\[0.2em]
+		{\large\color{gray!60!black} R, RStudio, and course materials}
+		
+		\vspace{2.5em}
+		
+		{\large Vojt\v{e}ch Z\'{i}ka, Ph.D.}\\[0.4em]
+		{\large \today}
+		
+		\vfill
+	\end{titlepage}
+	
+	\pagenumbering{gobble}
+	\tableofcontents
+	\newpage
+	\pagenumbering{arabic}
+	
+	% ============================================================
+	% INTRO
+	% ============================================================
+	This guide walks you through installing everything you need for this course: Git, R, and RStudio. It covers both Windows and Mac --- follow only the steps for your operating system. By the end, you will have the course materials downloaded to your computer and be ready to run R code.
+	
+	You do not need a GitHub account for this course. The course repository is public, so you can download it directly --- no sign-up required.
+	
+	\section*{What you will install}
+	\begin{itemize}
+		\item Git --- the tool used to download (and later update) the course materials.
+		\item R --- the programming language used in this course.
+		\item RStudio --- the application you will actually work in; it uses R behind the scenes.
+	\end{itemize}
+	Install them in this order: Git, then R, then RStudio. This takes about 15--20 minutes total.
+	
+
+	\section{Install Git}
+	
+	\subsection*{Windows}
+	\begin{enumerate}
+		\item Go to \url{https://git-scm.com/download/win} --- the download should start automatically.
+		\item Run the installer. You can accept all the default options by repeatedly clicking ``Next,'' then ``Install.''
+		\item Once finished, open the Start menu, search for ``Git Bash,'' and open it.
+		\item Type the following and press Enter:
+\begin{lstlisting}
+git --version
+\end{lstlisting}
+	\end{enumerate}
+	If you see a version number (e.g. \texttt{git version 2.44.0}), Git is installed correctly.
+	
+	\subsection*{Mac}
+	\begin{enumerate}
+		\item Open the Terminal app (press Cmd+Space, type ``Terminal,'' press Enter).
+		\item Type the following and press Enter:
+\begin{lstlisting}
+git --version
+\end{lstlisting}
+		\item If Git is not installed yet, macOS will show a popup asking to install the ``command line developer tools.'' Click Install and wait a few minutes for it to finish.
+		\item Once it is done, run \texttt{git --version} again to confirm you see a version number.
+	\end{enumerate}
+	
+	\begin{noteBox}
+		\textbf{Note:} If no popup appears and you get a ``command not found'' error instead, download Git directly from \url{https://git-scm.com/download/mac} and run the installer.
+	\end{noteBox}
+	
+
+	\section{Install R}
+	\begin{enumerate}
+		\item Go to \url{https://cran.r-project.org}.
+		\item Windows: click ``Download R for Windows'' $\rightarrow$ ``base'' $\rightarrow$ the top download link (e.g. ``Download R-4.x.x for Windows'').
+		\item Mac: click ``Download R for macOS'' and choose the correct file for your Mac --- the page lists an ``arm64'' build (for Apple Silicon Macs: M1/M2/M3/M4) and an ``x86\_64'' build (for older Intel Macs). If you are not sure which chip your Mac has, check Apple menu $\rightarrow$ About This Mac.
+		\item Run the installer and accept all default options.
+	\end{enumerate}
+	
+	\begin{noteBox}
+		\textbf{Note:} You will not open R directly in this course --- you will always work through RStudio, which uses R automatically in the background.
+	\end{noteBox}
+	
+
+	\section{Install RStudio}
+	\begin{enumerate}
+		\item Go to \url{https://posit.co/download/rstudio-desktop/}.
+		\item Scroll to ``Install RStudio Desktop'' and download the free version for your operating system.
+		\item Run the installer and accept all default options.
+		\item Open RStudio once to confirm it launches correctly. You should see a window with several panels (Console, Environment, Files, etc.).
+	\end{enumerate}
+	
+
+\section{Download the course materials}
+The course repository is public, so you can download it without creating any account. You will use Git to ``clone'' it --- this downloads the whole folder structure (scripts, data, slides) to your computer.
+\begin{enumerate}
+	\item Choose (or create) a folder on your computer where you want the course materials to live. For example, create a new folder called \texttt{DataAnalytics} on your Desktop. (Avoid spaces in the folder name --- they cause problems in the next step.)
+	\item Get the full path to that folder:
+	\begin{itemize}
+		\item \textbf{Mac:} in Finder, hold the \texttt{Option} key and right-click (or Control-click) the folder, then choose ``Copy `\texttt{DataAnalytics}' as Pathname.''
+		\item \textbf{Windows:} in File Explorer, hold \texttt{Shift} and right-click the folder, then choose ``Copy as path.''
+	\end{itemize}
+	\item Open Terminal (Mac) or Git Bash (Windows). Type \texttt{cd } (with a space after it), then paste the path you just copied, and press Enter. For example, on Mac:
+\begin{lstlisting}
+cd /Users/yourname/Desktop/DataAnalytics
+\end{lstlisting}
+	On Windows, ``Copy as path'' gives a \texttt{C:\textbackslash{}...} style path wrapped in quotes --- paste it as-is, quotes included:
+\begin{lstlisting}
+cd "C:\Users\yourname\Desktop\DataAnalytics"
+\end{lstlisting}
+	\item Clone the repository:
+\begin{lstlisting}
+git clone https://github.com/vojtechzika/data-analytics-ug.git
+\end{lstlisting}
+	\item This creates a new folder called \texttt{data-analytics-ug} inside the folder you selected, containing all the course files.
+\end{enumerate}
+
+	\section{Open the project in RStudio}
+	\begin{enumerate}
+		\item Open the \texttt{data-analytics-ug} folder you just downloaded, in Finder (Mac) or File Explorer (Windows).
+		\item Double-click \texttt{data-analytics-ug.Rproj}.
+		\item RStudio should open with this project loaded --- you will see ``data-analytics-ug'' in the top-right corner of the RStudio window.
+	\end{enumerate}
+
+	\section{Verify everything works}
+	\begin{enumerate}
+		\item In RStudio, click into the Console panel (usually bottom-left).
+		\item Type the following and press Enter:
+\begin{lstlisting}
+1 + 1
+\end{lstlisting}
+		\item You should see \texttt{[1] 2} printed below.
+		\item In the Files panel (bottom-right), confirm you can see the \texttt{R}, \texttt{data}, and \texttt{slides} folders.
+	\end{enumerate}
+	If all of the above worked, your setup is complete.
+	
+
+	\section{Getting course updates later}
+	Throughout the course, new materials may be added to the repository. To get the latest version, open Terminal or Git Bash, navigate into your course folder, and run:
+\begin{lstlisting}
+cd Documents/data-analytics-ug
+git pull
+\end{lstlisting}
+	This downloads any new or updated files without affecting your own work, as long as you have not edited the same files the instructor changed.
+	
+	\newpage
+	\section{Troubleshooting}
+	\begin{itemize}
+		\item \textbf{``git is not recognized'' / ``command not found''} right after installing: close and reopen Terminal or Git Bash (or restart your computer), then try again.
+		\item \textbf{Nothing happens when double-clicking the \texttt{.Rproj} file:} make sure RStudio is installed, then right-click the file and choose ``Open with $\rightarrow$ RStudio.''
+		\item \textbf{\texttt{git clone} fails with a permissions or authentication error:} double-check the URL was typed exactly as shown --- since the repo is public, no login should be requested.
+	\end{itemize}
+	
+\end{document}

@@ -1,0 +1,8 @@
+\contentsline {section}{\numberline {1}Install Git}{1}{section.1}%
+\contentsline {section}{\numberline {2}Install R}{2}{section.2}%
+\contentsline {section}{\numberline {3}Install RStudio}{2}{section.3}%
+\contentsline {section}{\numberline {4}Download the course materials}{2}{section.4}%
+\contentsline {section}{\numberline {5}Open the project in RStudio}{3}{section.5}%
+\contentsline {section}{\numberline {6}Verify everything works}{3}{section.6}%
+\contentsline {section}{\numberline {7}Getting course updates later}{3}{section.7}%
+\contentsline {section}{\numberline {8}Troubleshooting}{4}{section.8}%
