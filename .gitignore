@@ -1,4 +1,6 @@
 .DS_Store
+git.txt
+sync.command
 
 # History files
 .Rhistory
