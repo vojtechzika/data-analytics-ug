@@ -1,4 +1,4 @@
-data/clean/
+data/clean/*
 data/clean/.gitkeep
 
 .DS_Store
