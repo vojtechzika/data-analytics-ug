@@ -3,7 +3,9 @@
 # ============================================================
 
 # Load data from csv file into a data.frame called df
-df <- read.csv("data/raw/height-weight-by-sex.csv")
+df <- read.csv("data/raw/height-weight-by-sex.csv", sep = ",", header = TRUE)
+
+# Also open in Excel!
 
 # Print df to the console
 df
