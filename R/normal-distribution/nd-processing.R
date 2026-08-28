@@ -8,23 +8,78 @@ df <- read.csv("data/raw/height-weight-by-sex.csv", sep = ",", header = TRUE)
 # Also open in Excel!
 
 # Print df to the console
+head(df)
 df
+
 
 # Open df in "Excel-style" spreadsheet view
 # (leave this tab open — it reflects every change we make below)
 View(df)
 
 # Print just the column names (handy for copy-pasting into code)
+str(df)
+sapply(df, class)
+sapply(df, typeof)
+
 colnames(df)
 
-# Summary statistics for every column
-summary(df)
+
+inspect_df <- function(df){
+  print(head(df))
+  View(df)
+  print(str(df))
+  print(sapply(df, class))
+  print(sapply(df, typeof))
+  print(colnames(df))
+}
+
+inspect_df <- function(df) {
+  cat(
+    capture.output(print(head(df))),
+    capture.output(str(df)),
+    capture.output(print(sapply(df, class))),
+    capture.output(print(sapply(df, typeof))),
+    capture.output(print(colnames(df))),
+    sep = "\n"
+  )
+  View(df)
+}
+ 
+### work with data.frame and vectors
+
+#first column as data.frame
+df["Gender"] # by name
+df[1] # by order
+
+# first column as vector
+df$Gender
+df[["Gender"]]
+df[[1]]
+
+# a concrete vector value
+df$Gender[1]
+
+#change value
+df$Gender[1] <- "Male"
+
+#create new table column that is empty (NA)
+df$new_column <- NA
+
+#add data with vector
+df$new_column <- c("A", "B", NA, "C")
+
 
 # Histogram for every numeric column at once
 # (hist() normally only works on a single vector, but the Hmisc
 # package adds a method that lets it work on a whole data.frame)
 library(Hmisc)
 hist(df)
+
+boxplot(df)
+help("boxplot")
+
+# Summary statistics for every column
+summary(df)
 
 # ============================================================
 # 2. PROBLEM I.: Height and Weight are in inches and pounds
@@ -109,6 +164,9 @@ hist(df)
 # were compared).
 cor(df$height_in, df$height_cm)
 cor(df$weight_lb, df$weight_kg)
+
+
+### create BMI
 
 
 # ============================================================
